@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using AspNetCore_Session_Pratice.Models
+@using AspNetCore_Session_Pratice.Helpers
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Session Index</title>
+</head>
+<body>
+    <h3>Session Page</h3>
+    <label>UserName: @Context.Session.GetString("username")</label>
+    <label>Age: @Context.Session.GetInt32("age")</label>
+
+    <h3>Member Info</h3>
+    @{
+        Member member = SessionHelper.GetObjectFromJson<Member>(Context.Session, "member");
+    }
+    <label>ID: @member.ID</label>
+    <label>Name: @member.Name</label>
+    <label>Level: @member.Level</label>
+
+    <h3>Member List</h3>
+    @{ 
+        List<Member> members = SessionHelper.GetObjectFromJson<List<Member>>(Context.Session, "members");
+    }
+
+    @foreach(var m in members)
+    {
+        <div>
+            <label>ID: @m.ID</label>
+            <label>Name: @m.Name</label>
+            <label>Level: @m.Level</label>
+        </div>
+    }
+
+</body>
+</html>
