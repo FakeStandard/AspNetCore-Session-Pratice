@@ -19,7 +19,17 @@ namespace AspNetCore_Session_Pratice
             // Dependency Injection
             services.AddControllersWithViews();
 
-            services.AddSession();
+            // Add session service to the container
+            //services.AddSession();
+
+            // Set session property
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = "WebSession";
+                // Set session timeout
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,7 +40,7 @@ namespace AspNetCore_Session_Pratice
                 app.UseDeveloperExceptionPage();
             }
 
-            // Add Pipe Line
+            // Add pipeline
             app.UseSession();
 
             app.UseRouting();
