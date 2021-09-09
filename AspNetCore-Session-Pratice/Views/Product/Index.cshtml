@@ -6,6 +6,29 @@
 
 <h3>Product Index</h3>
 <hr />
-<p>Welcome @Context.Session.GetString("username")</p>
+<p class="alert alert-primary">Welcome @Context.Session.GetString("username")</p>
+
+<table class="table border" cellpadding="2" cellspacing="2">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Photo</th>
+        <th>Price</th>
+        <th>Buy</th>
+    </tr>
+
+    @foreach (var product in ViewBag.products)
+    {
+        <tr>
+            <td>@product.ID</td>
+            <td>@product.Name</td>
+            <td><img src="~/lib/images/@product.Photo" width="60" /> </td>
+            <td>@product.Price</td>
+            <td align="center">
+                <a class="btn btn-outline-success" asp-controller="cart" asp-action="buy" asp-route-id="@product.ID">Buy Now</a>
+            </td>
+        </tr>
+    }
+</table>
 
 <a class="btn btn-danger" asp-controller="account" asp-action="logout">Logout</a>
