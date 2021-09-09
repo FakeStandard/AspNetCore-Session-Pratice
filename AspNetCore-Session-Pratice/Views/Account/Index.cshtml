@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container-fluid justify-content-center align-content-center">
+    <form method="post" asp-controller="account" asp-action="login">
+        <div class="container-fluid mt-5">
+            <div class="card p-5 border-info shadow align-content-center justify-content-center">
+                <h3>Login Page</h3>
+                <p style="color:red">@ViewBag.error</p>
+
+                <table border="0" cellpadding="2" cellspacing="2">
+                    <tr>
+                        <td>
+                            <label class="col-form-label">UserName</label>
+                        </td>
+                        <td>
+                            <input type="text" name="username" class="form-control"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="col-form-label">Password</label>
+                        </td>
+                        <td>
+                            <input type="password" name="password" class="form-control"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <input type="submit" value="Login" class="btn btn-info" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+

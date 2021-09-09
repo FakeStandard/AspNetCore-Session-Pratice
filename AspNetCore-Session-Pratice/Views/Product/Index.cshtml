@@ -1,0 +1,11 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@{ 
+    ViewData["Title"] = "Product Index";
+}
+
+<h3>Product Index</h3>
+<hr />
+<p>Welcome @Context.Session.GetString("username")</p>
+
+<a class="btn btn-danger" asp-controller="account" asp-action="logout">Logout</a>

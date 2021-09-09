@@ -40,6 +40,8 @@ namespace AspNetCore_Session_Pratice
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             // Add pipeline
             app.UseSession();
 
@@ -54,7 +56,7 @@ namespace AspNetCore_Session_Pratice
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Session}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=Index}/{id?}");
             });
         }
     }
